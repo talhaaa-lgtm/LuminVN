@@ -12,6 +12,16 @@ struct TextureData {
 
 class AssetManager {
     public:
+        AssetManager() = default;
+
         TextureData loadTexture(const char* filename);
         void freeTexture(TextureData& tex);
+
+        // disabled copying
+        AssetManager(const AssetManager&) = delete;
+        AssetManager& operator = (const AssetManager&) = delete;
+
+        // moving allowed
+        AssetManager(AssetManager&& other) noexcept;
+        AssetManager& operator=(AssetManager&& other) noexcept;
 };

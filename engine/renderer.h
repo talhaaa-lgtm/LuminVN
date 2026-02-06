@@ -1,12 +1,22 @@
 #pragma once
 
-#include <iostream>
-#include <SDL2/SDL.h>
+#include "mesh.h"
+
 #include <glad/glad.h>
-#include <glm/glm.hpp>
-#include <gtc/matrix_transform.hpp>
-#include <gtc/type_ptr.hpp>
+
+class Shader;
 
 class Renderer {
-    
+    public:
+        Renderer() = default;
+
+        void draw(const Mesh& meshName, const Shader& shader, GLsizei indexCount, const void* indexOffset = nullptr);
+
+        // disabled copying
+        Renderer(const Renderer&) = delete;
+        Renderer& operator = (const Renderer&) = delete;
+
+        // moving allowed
+        Renderer(Renderer&& other) noexcept;
+        Renderer& operator=(Renderer&& other) noexcept;
 };

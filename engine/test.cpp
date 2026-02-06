@@ -2,6 +2,7 @@
 #include "assetManager.h"
 #include "shader.h"
 #include "mesh.h"
+#include "renderer.h"
 
 #include <glad/glad.h>
 #include <SDL2/SDL.h>
@@ -27,7 +28,7 @@ int main(int argc, char* argv[]){
         Shader shader("shaders/temp.vert", "shaders/temp.frag");
 
         AssetManager asset;
-        TextureData apple = asset.loadTexture("assets/apple.png");
+        TextureData apple = asset.loadTexture("assets/test.png");
 
         Mesh mesh1(vertices, sizeof(vertices), indices, sizeof(indices), 6);
         mesh1.addAttribute(0, 3, 5 * sizeof(float), (void*)0);
@@ -35,6 +36,8 @@ int main(int argc, char* argv[]){
         mesh1.addTexture(apple, GL_REPEAT, GL_LINEAR);
 
         asset.freeTexture(apple);
+
+        Renderer rendererMain;
 
         bool running = true;
         SDL_Event event;
@@ -48,9 +51,7 @@ int main(int argc, char* argv[]){
             glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
-            glUseProgram(shader.getShaders().shaderProgram);
-            glBindVertexArray(mesh1.getGLObjects().VAO);
-            glDrawElements(GL_TRIANGLES, mesh1.getIndexCount(), GL_UNSIGNED_INT, 0);
+            rendererMain.draw(mesh1, shader, mesh1.getIndexCount(), 0);
 
             SDL_GL_SwapWindow(instanceMain.getWindow());
         }
