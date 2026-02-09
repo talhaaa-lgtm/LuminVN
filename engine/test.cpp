@@ -48,7 +48,7 @@ int main(int argc, char* argv[]){
                     running = false;
             }
 
-            glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
             rendererMain.draw(mesh1, shader, mesh1.getIndexCount(), 0);
