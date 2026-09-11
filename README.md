@@ -1,3 +1,5 @@
+MESSY UNFINISHED PROJECT, ON HOLD
+
 # LuminVN
 2/2.5D Visual Novel Engine
 
@@ -172,7 +174,7 @@ Sound Effects
       am: "Not cool...."
     }
     else{
-      am: "I- I like you.... {username}" ~animated: 5
+      am: "Hello.... {username}" ~animated: 5
     }
 
 
@@ -189,15 +191,15 @@ Sound Effects
 
   e.g.
     choice{
-      "Tease her":
+      "Bother":
         call scene(teasing)
-      "Pat her head":
-        "Pats"
-        "{username}": There there....
+      "EXAMPLE":
+        "EXAMPLE_TEXT"
+        "{username}": TEXT_GOES_HERE
         increase affection by 120
-      "Shrug her off":
+      "Shrug off":
         decrease affection by 200
-        am: "Hmpfh..."
+        am: "Whatever..."
     }
 
 
